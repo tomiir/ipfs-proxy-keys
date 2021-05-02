@@ -1,5 +1,5 @@
 import { bool, func } from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CustomModal from '~app/components/CustomModal';
 import Input from '~app/components/Input';
@@ -11,7 +11,7 @@ import styles from '../../styles.module.scss';
 function NewKeyModal({ handleConfirm, isOpen }) {
   const [value, setValue] = useState('');
   const handleKeyChange = e => setValue(e.target.value);
-  console.log(value);
+  useEffect(() => setValue(''), [isOpen]);
   return (
     <CustomModal className={styles.modalContainer} modal={MODALS.NEW_KEY} isOpen={isOpen}>
       <div className="full-width full-height column">

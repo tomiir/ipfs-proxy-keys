@@ -2,14 +2,14 @@
 
 @import 'src/scss/variables/variables';
 
-$checkbox-container: 18px; //by changing it, it also changes the checkmark size
+$checkbox-container: 25px; 
 $checkmark-height: $checkbox-container * 0.5;
 $checkmark-width: $checkbox-container * 0.2; 
 
 $checkbox-width-line: 2px;
 $border: 1px;
 $border-color: $azure;
-$border-radius: 0px;
+$border-radius: 5px;
 
 .checkbox-label {
   cursor: pointer;

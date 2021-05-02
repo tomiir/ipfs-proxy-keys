@@ -1,0 +1,27 @@
+@import 'layout';
+
+.key-container {
+  @extend .row, .middle, .space-between;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 1px 1px 20px 5px silver;
+}
+
+.drop-icon {
+  transform: rotate(90deg);
+  height: 15px;
+  width: 15px;
+  transition-duration: 300ms;
+  &.rotate {
+    transform: rotate(270deg)
+  }
+}
+
+.drop-button {
+  @extend .row, .middle, .center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: silver;
+}

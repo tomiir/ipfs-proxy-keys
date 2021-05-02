@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '~app/components/Button';
-import Checkbox from '~app/components/Checkbox';
 import ModalActions from '~redux/Modal/actions';
 import PageLogo from '~assets/ipfs-logo.svg';
 import { MODALS } from '~redux/Modal/constants';
 
 import NewKeyModal from './components/NewKeyModal';
 import styles from './styles.module.scss';
+import ApiKeys from './components/ApiKeys';
 
 function Home() {
   const dispatch = useDispatch();
@@ -20,10 +20,11 @@ function Home() {
     setKeys([...keys, { active: false, value }]);
     closeModal();
   };
-
+  const activateKey = keyValue => () =>
+    setKeys(keys.map(key => (key.value === keyValue ? { ...key, active: !key.active } : key)));
   return (
     <div className={`full-height full-width ${styles.screenContainer}`}>
-      <div className="row middle space-between m-bottom-4">
+      <div className="row middle space-between m-bottom-6">
         <div className="row middle">
           <img className={`m-right-2 ${styles.ipfsLogo}`} src={PageLogo} alt="zerf-icon" />
           <h1 className="title bold">IPFS Proxy Key Manager</h1>
@@ -32,17 +33,7 @@ function Home() {
           <span>Create API KEY</span>
         </Button>
       </div>
-      <div className={styles.keysContainer}>
-        {keys.map(aKey => (
-          <div className={styles.keyContainer} key={aKey.value}>
-            <h2 className="large-text">{aKey.value}</h2>
-            <Checkbox checked={aKey.active} />
-            <Button className={styles.dropButton}>
-              {/* <img className={styles.dropIcon} src={ArrowDown} /> */}
-            </Button>
-          </div>
-        ))}
-      </div>
+      <ApiKeys keys={keys} activateKey={activateKey} />
       <NewKeyModal isOpen={modalOpen} handleConfirm={addNewKey} />
     </div>
   );

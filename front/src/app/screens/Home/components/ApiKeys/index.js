@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import cn from 'classnames';
+import { bool, func, shape, string } from 'prop-types';
+
+import Arrow from '~assets/arrow.svg';
+import Button from '~app/components/Button';
+import Checkbox from '~app/components/Checkbox';
+
+import styles from './styles.module.scss';
+
+function ApiKeys({ keys, activateKey }) {
+  const [openKey, setOpenKey] = useState();
+  const toggleKey = index => () => (openKey === undefined ? setOpenKey(index) : setOpenKey());
+  return (
+    <div className="column full-height">
+      {keys.map((aKey, index) => (
+        <div className={`m-bottom-4 ${styles.keyContainer}`} key={aKey.value}>
+          <h2 className="large-text">{aKey.value}</h2>
+          <div className="row center bottom">
+            <Checkbox
+              label="Active"
+              labelClassName="m-bottom-1 text bold"
+              containerClassName="m-right-6"
+              checked={aKey.active}
+              onChange={activateKey(aKey.value)}
+            />
+            <Button className={styles.dropButton} onClick={toggleKey(index)}>
+              <img className={cn(styles.dropIcon, { [styles.rotate]: index === openKey })} src={Arrow} />
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+ApiKeys.propTypes = {
+  activateKey: func,
+  keys: shape({
+    active: bool,
+    value: string
+  })
+};
+
+export default ApiKeys;
