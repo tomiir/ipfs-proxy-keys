@@ -1,7 +1,7 @@
 @import 'layout';
 
 .key-container {
-  @extend .row, .middle, .space-between;
+  @extend .column, .middle;
   border-radius: 10px;
   background-color: white;
   padding: 20px;
@@ -24,4 +24,9 @@
   height: 30px;
   border-radius: 50%;
   background-color: silver;
+}
+
+.requests-container {
+  padding-top: 20px;
+  border-top: 1px solid silver;
 }
