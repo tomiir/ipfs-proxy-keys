@@ -1,11 +1,8 @@
 import { create } from 'apisauce';
 import { CamelcaseSerializer, SnakecaseSerializer } from 'cerealizr';
-import { NON_SERIALIZABLE_URLS } from '~constants/urls';
 
 const camelSerializer = new CamelcaseSerializer();
 const snakeSerializer = new SnakecaseSerializer();
-
-const notSerializableUrl = url => NON_SERIALIZABLE_URLS.includes(url)
 
 export const createApiWithURL = baseURL =>
   create({
@@ -25,7 +22,7 @@ export const headers = {
 export const setAuthHeader = token => api.setHeader(headers.AUTHORIZATION, `Bearer ${token}`);
 
 api.addResponseTransform(response => {
-  if (response.data && !notSerializableUrl(response.config.url)) {
+  if (response.data) {
     response.data = camelSerializer.serialize(response.data);
   }
 });

@@ -23,10 +23,7 @@
           "~redux": "./src/redux",
           "~services": "./src/services",
           "~utils": "./src/utils",
-          "~propTypes": "./src/propTypes",
-          "~scss": "./src/scss",
-          "~hooks": "./src/hooks",
-          "~models": "./src/models"
+          "~scss": "./src/scss"
         }
       }
     ]

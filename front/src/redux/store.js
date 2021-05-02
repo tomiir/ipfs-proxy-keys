@@ -5,8 +5,6 @@ import thunk from 'redux-thunk';
 import { fetchMiddleware, configureMergeState, wrapCombineReducers } from 'redux-recompose';
 
 import modal from './Modal/reducer';
-import users from './Users/reducer';
-import settings from './Settings/reducer';
 import auth from './Auth/reducer';
 
 configureMergeState((state, diff) => state.merge(diff));
@@ -19,8 +17,6 @@ export const history = createBrowserHistory();
 const reducers = combineReducers({
   router: connectRouter(history),
   modal,
-  users,
-  settings,
   auth
 });
 
