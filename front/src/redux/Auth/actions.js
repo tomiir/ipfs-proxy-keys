@@ -6,8 +6,6 @@ import * as AuthService from '~services/AuthService';
 import LocalStorage from '~services/LocalStorageService';
 import { ROUTES } from '~constants/routes';
 
-import { MAIL_SENT } from './constants';
-
 export const actions = createTypes(completeTypes(['SIGN_IN']), '@@AUTH');
 
 const targets = {
@@ -15,20 +13,16 @@ const targets = {
 };
 
 export const actionCreators = {
-  signIn: ({ user, setCode }) => ({
+  signIn: user => ({
     type: actions.SIGN_IN,
     target: targets.SIGN_IN,
     payload: user,
     service: AuthService.signIn,
     injections: [
       withPostSuccess((dispatch, response) => {
-        if (response.status === MAIL_SENT) {
-          setCode(response.status);
-        } else {
-          setAuthHeader(response.data.token);
-          LocalStorage.setTokenManager(response.data);
-          dispatch(push(ROUTES.PLAYGROUND.path));
-        }
+        setAuthHeader(response.data.token);
+        LocalStorage.setTokenManager(response.data);
+        dispatch(push(ROUTES.HOME.path));
       })
     ]
   })

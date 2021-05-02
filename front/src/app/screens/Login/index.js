@@ -18,7 +18,7 @@ function Login() {
   const handleEmailChange = e => setEmail(e.target.value);
   const handlePasswordChange = e => setPassword(e.target.value);
 
-  const handleSubmit = () => dispatch(actionCreators.signIn(email, password));
+  const handleSubmit = () => dispatch(actionCreators.signIn({ email, password }));
   return (
     <div className="row full-width center middle space-between">
       <div className="column full-width center">

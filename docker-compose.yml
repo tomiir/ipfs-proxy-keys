@@ -17,12 +17,12 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
-      - MONGO_INITDB_DATABASE=bootstrapDB
+      - MONGO_INITDB_DATABASE=ipfs-proxy
     container_name: db
     image: mongo
     ports: ['27017:27017']
     volumes:
-      - ./db:/data/db
+      - ./back/.db:/data/db
   front:
     container_name: front
     stdin_open: true
@@ -34,7 +34,7 @@ services:
     volumes:
       - './front:/front'
       - './front/node_modules'
-    command: 'yarn start'
+    command: 'npm start'
 
 volumes:
   back:
