@@ -4,7 +4,7 @@ const USERS = 'users';
 
 export const FIELDS_TYPES_PER_MODEL = {
   [USERS]: {
-    string: ['name', 'surname', 'email', 'role', 'section'],
+    string: ['email'],
   },
 };
 

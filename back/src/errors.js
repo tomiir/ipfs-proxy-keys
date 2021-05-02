@@ -1,59 +1,25 @@
-export const unauthorizedUser = (message, internalCode) => ({
+export const unauthorizedUser = (message) => ({
   code: 401,
   message,
-  internalCode,
 });
 
-export const invalidKeys = (message, internalCode) => ({
-  code: 400,
-  message,
-  internalCode,
-});
+export const entityAlreadyExists = (id, entity) => ({ code: 400, message: `The ${entity} with ${id} already exists` });
 
-export const entityAlreadyExists = (id, entity, internalCode) => ({ code: 400, message: `The ${entity} with ${id} already exists`, internalCode });
+export const entityNotFound = (id, entity) => ({ code: 404, message: `The ${entity} with ${id} was not found` });
 
-export const entityNotFound = (id, entity, internalCode) => ({ code: 404, message: `The ${entity} with ${id} was not found`, internalCode });
-
-export const forbiddenUser = (message, internalCode) => ({
-  code: 403,
-  message,
-  internalCode,
-});
-
-export const tokenExpired = (internalCode) => ({
+export const tokenExpired = () => ({
   code: 401,
   message: 'Token expired',
-  internalCode,
 });
 
-export const invalidSignature = (internalCode) => ({
+export const invalidSignature = () => ({
   code: 400,
   message: 'Bad token',
-  internalCode,
 });
 
-export const invalidApiKey = (internalCode) => ({
+export const invalidApiKey = () => ({
   code: 401,
   message: 'The API key is invalid',
-  internalCode,
-});
-
-export const invalidMongoIdError = (id, internalCode) => ({
-  code: 400,
-  message: `Invalid id ${id}`,
-  internalCode,
-});
-
-export const invalidFormatError = (message) => ({
-  code: 400,
-  message,
-  internalCode: '9000',
-});
-
-export const invalidCsv = (internalCode) => ({
-  code: 400,
-  message: 'Invalid CSV data',
-  internalCode,
 });
 
 export const JWT_ERRORS = {

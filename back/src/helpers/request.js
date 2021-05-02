@@ -18,11 +18,10 @@ export const endRequest = ({
 };
 
 export const catchRequest = ({
-  err, res, message = 'Server Error', internalCode = '9999',
+  err, res, message = 'Server Error',
 }) => {
   logger.error(inspect(err, { showHidden: false, depth: null }));
   return res.status((err && err.code) || 503).json([{
-    internal_code: (err && err.internalCode) || internalCode,
     message: (err && err.message) || message,
   }]);
 };

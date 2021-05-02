@@ -4,13 +4,14 @@ import { compare } from '../helpers/passwords.js';
 import { encodeLogin as encode } from '../services/session.js';
 import { signInMapper, userMapper } from '../serializers/users.js';
 import logger from '../logger.js';
+import { entityNotFound, unauthorizedUser } from '../errors.js';
 
 export const signIn = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  if (!user) return catchRequest({ err: 'User not found', res });
+  if (!user) return catchRequest({ err: entityNotFound(`email ${email}`, 'user'), res });
   const passwordMatches = await compare(password, user.password);
-  if (!passwordMatches) return catchRequest({ err: "Passwords don't match", res });
+  if (!passwordMatches) return catchRequest({ err: unauthorizedUser("Passwords don't match"), res });
   const payload = await encode(user.email);
   res.set('authorization', payload);
   logger.info(`User ${user.email} signed in`);
