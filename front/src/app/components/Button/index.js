@@ -4,11 +4,11 @@ import React from 'react';
 
 import LoadingWrapper from '../LoadingWrapper';
 
-function Button({ label, onClick, type = 'button', className, loading }) {
+function Button({ children, onClick, type = 'button', className, loading }) {
   return (
     <LoadingWrapper loading={loading}>
       <button type={type} className={className} onClick={onClick}>
-        {label}
+        {children}
       </button>
     </LoadingWrapper>
   );
@@ -16,7 +16,6 @@ function Button({ label, onClick, type = 'button', className, loading }) {
 
 Button.propTypes = {
   className: string,
-  label: string,
   loading: boolean,
   type: oneOf(['button', 'submit', 'reset']),
   onClick: func

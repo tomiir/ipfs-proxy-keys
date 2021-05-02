@@ -1,3 +1,3 @@
 export const MODALS = {
-  EXAMPLE: 'example'
+  NEW_KEY: 'new_key'
 };

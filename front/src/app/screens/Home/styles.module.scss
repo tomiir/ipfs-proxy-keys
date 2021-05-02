@@ -1,0 +1,31 @@
+@import 'fonts';
+@import 'layout';
+
+.screen-container {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.ipfs-logo {
+  height: 50px;
+  width: 50px;
+}
+
+.keys-button {
+  @extend .row, .middle,, .center, .text;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: cadetblue;
+  color: white;
+}
+
+.modal-button {
+  @extend .keys-button;
+  width: 100%;
+}
+
+.modal-container {
+  max-width: 500px;
+}

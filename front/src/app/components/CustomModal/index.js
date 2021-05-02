@@ -4,9 +4,9 @@ import { func, string, bool } from 'prop-types';
 import Modal from 'react-modal';
 import cn from 'classnames';
 
-import { noScroll } from '~utils/scroll';
 import ModalActions from '~redux/Modal/actions';
 
+import { noScroll } from './utils';
 import styles from './styles.module.scss';
 
 function CustomModal({

@@ -3,9 +3,9 @@ import { bool, string, func, object } from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import Helmet from '~app/components/Helmet';
-
-import { ROUTES } from 'constants/routes';
+import Helmet from '~components/Helmet';
+import LocalStorageService from '~services/LocalStorageService';
+import { ROUTES } from '~constants/routes';
 
 const AuthenticatedRoute = ({
   title,
@@ -14,12 +14,15 @@ const AuthenticatedRoute = ({
   publicRoute,
   component: Component,
   componentProps,
-  authorized,
   ...props
 }) => {
-  const redirect = (publicRoute && authorized) || (!publicRoute && !authorized);
-  return redirect ? (
+  const manager = LocalStorageService.getTokenManager();
+  const redirectToHome = publicRoute && !!manager?.token;
+  const redirectToLogin = !publicRoute && !manager?.token;
+  return redirectToLogin ? (
     <Redirect to={ROUTES.LOGIN_USER.path} />
+  ) : redirectToHome ? (
+    <Redirect to={ROUTES.HOME.path} />
   ) : (
     <>
       <Helmet title={title} description={description} />

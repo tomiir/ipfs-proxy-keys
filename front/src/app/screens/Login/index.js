@@ -49,11 +49,11 @@ function Login() {
             />
             <Button
               type="submit"
-              label="Log in"
               className={`full-width m-top-3 ${styles.button}`}
               loading={signInLoading}
-              onClick={handleSubmit}
-            />
+              onClick={handleSubmit}>
+              Log In
+            </Button>
           </div>
         </div>
       </div>
