@@ -1,3 +1,3 @@
 /* eslint-disable import/prefer-default-export */
 
-export const MODELS = ['User'];
+export const MODELS = ['User', 'Key'];
