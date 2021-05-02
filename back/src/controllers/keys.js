@@ -6,7 +6,7 @@ import { entityAlreadyExists } from '../errors.js';
 export const getKeys = async (req, res) => {
   const { id } = req.user;
   const keys = await Key.find({ userId: id });
-  return endRequest({ response: { keys }, code: 200, res });
+  return endRequest({ response: keys, code: 200, res });
 };
 
 export const createKey = async (req, res) => {
@@ -30,8 +30,8 @@ export const createKey = async (req, res) => {
   }
 
   return key.save()
-    .then(() => endRequest({
-      response: { key },
+    .then((response) => endRequest({
+      response,
       code: 201,
       res,
     }))

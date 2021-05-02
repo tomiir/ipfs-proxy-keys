@@ -6,6 +6,7 @@ import { fetchMiddleware, configureMergeState, wrapCombineReducers } from 'redux
 
 import modal from './Modal/reducer';
 import auth from './Auth/reducer';
+import keys from './Keys/reducer';
 
 configureMergeState((state, diff) => state.merge(diff));
 
@@ -17,6 +18,7 @@ export const history = createBrowserHistory();
 const reducers = combineReducers({
   router: connectRouter(history),
   modal,
+  keys,
   auth
 });
 
