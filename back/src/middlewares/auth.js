@@ -1,12 +1,10 @@
-import { decodeLogin, decodePasswordChange } from '../services/session.js';
+import { decodeLogin } from '../services/session.js';
 import User from '../models/users.js';
 import { catchRequest } from '../helpers/request.js';
 
-import {
-  unauthorizedUser, forbiddenUser, JWT_ERRORS,
-} from '../errors.js';
+import { unauthorizedUser, JWT_ERRORS } from '../errors.js';
 
-export const authenticate = async (req, res, next, decode) => {
+const authenticate = async (req, res, next, decode) => {
   const authHeader = req.headers[process.env.JWT_HEADER_NAME];
   if (!authHeader) return catchRequest({ err: unauthorizedUser('No token was set', '2000'), res });
   const authSplitted = authHeader.split(' ');
@@ -26,17 +24,6 @@ export const authenticate = async (req, res, next, decode) => {
   }
 };
 
-export const authenticateUser = (req, res, next) => authenticate(
+export default (req, res, next) => authenticate(
   req, res, next, decodeLogin,
 );
-export const authenticatePasswordChange = (req, res, next) => authenticate(
-  req, res, next, decodePasswordChange,
-);
-
-export const isAdmin = (req, res, next) => {
-  const { user } = req;
-  if (user.role === 'admin') {
-    return next();
-  }
-  return catchRequest({ err: forbiddenUser(`User '${user.email}' is not Admin`, '2005'), res });
-};

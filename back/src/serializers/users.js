@@ -1,7 +1,6 @@
-const signInMapper = ({
+export const signInMapper = ({
   expirationTime = process.env.JWT_EXPIRATION_TIME,
   token,
-  role,
-}) => ({ expirationTime, token, role });
+}) => ({ expirationTime, token });
 
-export default signInMapper;
+export const userMapper = ({ email }) => ({ email });

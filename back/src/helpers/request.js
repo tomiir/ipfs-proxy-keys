@@ -1,7 +1,5 @@
 import { inspect } from 'util';
-import jsonexport from 'jsonexport';
 import logger from '../logger.js';
-import { invalidCsv } from '../errors.js';
 
 const setHeaders = (res, headers = {}) => Object.entries(headers).forEach(
   (header) => res.header(...header),
@@ -27,23 +25,4 @@ export const catchRequest = ({
     internal_code: (err && err.internalCode) || internalCode,
     message: (err && err.message) || message,
   }]);
-};
-
-export const csvRequest = ({
-  data = [], mapper = (value) => value, fileName, code, res,
-}) => {
-  if (!data.length) {
-    return catchRequest({
-      err: invalidCsv('2038'),
-      res,
-    });
-  }
-
-  const formattedData = data.map(mapper);
-
-  return jsonexport(formattedData).then((csv) => endRequest({
-    response: csv, code, res, headers: { 'Content-type': 'text/csv' }, attachment: fileName,
-  })).catch((err) => catchRequest({
-    err, res, message: 'error creating csv', internalCode: '2037',
-  }));
 };

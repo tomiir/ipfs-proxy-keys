@@ -11,9 +11,4 @@ export default {
     isString: true,
     errorMessage: errors.USER.PASSWORD,
   },
-  admin: {
-    in: ['body'],
-    isBoolean: true,
-    optional: true,
-  },
 };

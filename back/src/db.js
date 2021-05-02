@@ -45,7 +45,6 @@ export const initDatabase = () => {
     name,
   } = DB_PER_ENV[process.env.NODE_ENV];
   const connectionString = `${prefix}://${user ? `${user}:${password}@` : ''}${host}${port ? `:${port}` : ''}/${name}`;
-  console.log(connectionString);
   mongoose.connect(connectionString,
     { useNewUrlParser: true, useUnifiedTopology: true, authSource: 'admin' });
   return mongoose;

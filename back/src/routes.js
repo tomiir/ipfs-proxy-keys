@@ -1,9 +1,9 @@
 import health from './controllers/health_check.js';
 import { signIn, getUser } from './controllers/users.js';
-import { validateSchemaAndFail } from './middlewares/params.js';
+import { validateSchemaAndFail } from './middlewares/schema.js';
 
-import { authenticateUser as authenticate } from './middlewares/auth.js';
-import { signInSchema } from './schemas/index.js';
+import authenticate from './middlewares/auth.js';
+import signInSchema from './schemas/sign_in.js';
 
 export default (app) => {
   // web app
