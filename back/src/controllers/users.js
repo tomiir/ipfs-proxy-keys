@@ -9,7 +9,7 @@ import { entityNotFound, unauthorizedUser } from '../errors.js';
 export const signIn = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  if (!user) return catchRequest({ err: entityNotFound(`email ${email}`, 'user'), res });
+  if (!user) return catchRequest({ err: entityNotFound(`The user with email ${email} was not found`), res });
   const passwordMatches = await compare(password, user.password);
   if (!passwordMatches) return catchRequest({ err: unauthorizedUser("Passwords don't match"), res });
   const payload = await encode(user.email);

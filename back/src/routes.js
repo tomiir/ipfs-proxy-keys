@@ -1,6 +1,6 @@
 import health from './controllers/health_check.js';
 import { signIn, getUser } from './controllers/users.js';
-import { createKey, getKeys } from './controllers/keys.js';
+import { createKey, getKeys, updateKey } from './controllers/keys.js';
 
 import { validateSchemaAndFail } from './middlewares/schema.js';
 import authenticate from './middlewares/auth.js';
@@ -14,5 +14,6 @@ export default (app) => {
 
   app.get('/keys', [authenticate], getKeys);
   app.post('/keys', [authenticate, validateSchemaAndFail(createKeySchema)], createKey);
+  app.patch('/keys/:id', [authenticate], updateKey);
   app.get('/health', health);
 };

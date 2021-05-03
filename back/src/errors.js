@@ -3,9 +3,9 @@ export const unauthorizedUser = (message) => ({
   message,
 });
 
-export const entityAlreadyExists = (id, entity) => ({ code: 400, message: `The ${entity} with ${id} already exists` });
+export const entityAlreadyExists = (message) => ({ code: 400, message });
 
-export const entityNotFound = (id, entity) => ({ code: 404, message: `The ${entity} with ${id} was not found` });
+export const entityNotFound = (message) => ({ code: 404, message });
 
 export const tokenExpired = () => ({
   code: 401,
