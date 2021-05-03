@@ -9,6 +9,23 @@ export const getKeys = async (req, res) => {
   return endRequest({ response: keys, code: 200, res });
 };
 
+export const updateKey = async (req, res) => {
+  const { params, body } = req;
+  try {
+    const key = await Key.updateOne({ _id: params.id }, body);
+    return endRequest({
+      response: key,
+      code: 201,
+      res,
+    });
+  } catch (err) {
+    return catchRequest({
+      err: { code: 400, message: err.message },
+      res,
+    });
+  }
+};
+
 export const createKey = async (req, res) => {
   const { user, body } = req;
   const sameKey = await Key.findOne({ userId: user.id, value: body.value });
