@@ -33,11 +33,12 @@ api.addResponseTransform(response => {
 });
 
 api.addRequestTransform(request => {
-  const tokenManager = LocalStorageService.getTokenManager();
-  setAuthHeader(tokenManager?.token);
   if (request.data) {
     request.data = snakeSerializer.serialize(request.data);
   }
 });
+
+const tokenManager = LocalStorageService.getTokenManager();
+setAuthHeader(tokenManager?.token);
 
 export default api;

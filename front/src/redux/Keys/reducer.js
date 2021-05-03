@@ -2,6 +2,7 @@ import Immutable from 'seamless-immutable';
 import { createReducer, completeState, completeReducer } from 'redux-recompose';
 
 import { actions } from './actions';
+import { addNewKey, updateKeys } from './utils';
 
 const initialState = {
   keys: []
@@ -10,13 +11,10 @@ const initialState = {
 const completedState = completeState(initialState);
 
 const reducerDescription = {
-  primaryActions: [actions.GET_KEYS, actions.CREATE_KEY],
+  primaryActions: [actions.GET_KEYS, actions.CREATE_KEY, actions.UPDATE_KEY],
   override: {
-    [actions.CREATE_KEY_SUCCESS]: (state, action) =>
-      state.merge({
-        keys: [...state.keys, action.payload],
-        keysLoading: false
-      })
+    [actions.CREATE_KEY_SUCCESS]: addNewKey,
+    [actions.UPDATE_KEY_SUCCESS]: updateKeys
   }
 };
 

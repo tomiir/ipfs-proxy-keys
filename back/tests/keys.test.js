@@ -71,7 +71,7 @@ describe('keys controller', () => {
     test('should update an existing key correctly', async () => {
       const { body: newKey } = await authRequest(token, 'post', '/keys', key);
       const response = await authRequest(token, 'patch', `/keys/${newKey._id}`, { active: true, value: 'test' });
-      expect(response.statusCode).toBe(200);
+      expect(response.statusCode).toBe(201);
       expect(response.body.active).toBe(true);
       expect(response.body.value).toBe('test');
     });

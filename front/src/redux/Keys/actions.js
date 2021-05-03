@@ -1,8 +1,8 @@
 import { completeTypes, createTypes } from 'redux-recompose';
 
-import { createKey, getKeys } from '~services/KeysService';
+import { createKey, getKeys, updateKey } from '~services/KeysService';
 
-export const actions = createTypes(completeTypes(['GET_KEYS', 'CREATE_KEY']), '@@KEYS');
+export const actions = createTypes(completeTypes(['GET_KEYS', 'CREATE_KEY', 'UPDATE_KEY']), '@@KEYS');
 
 export const actionCreators = {
   getKeys: () => ({
@@ -15,6 +15,12 @@ export const actionCreators = {
     target: 'keys',
     payload: key,
     service: createKey
+  }),
+  updateKey: key => ({
+    type: actions.UPDATE_KEY,
+    target: 'keys',
+    payload: key,
+    service: updateKey
   })
 };
 

@@ -27,8 +27,7 @@ function Home() {
   useEffect(() => {
     dispatch(actionCreators.getKeys());
   }, []);
-  // const activateKey = keyValue => () =>
-  //   setKeys(keys.map(key => (key.value === keyValue ? { ...key, active: !key.active } : key)));
+  const toggleKey = key => () => dispatch(actionCreators.updateKey({ ...key, active: !key.active }));
   return (
     <div className={`full-height full-width ${styles.screenContainer}`}>
       <div className="row middle space-between m-bottom-6">
@@ -40,7 +39,7 @@ function Home() {
           <span>Create API KEY</span>
         </Button>
       </div>
-      <ApiKeys keys={keys} activateKey={() => console.log('activate')} loading={keysLoading} />
+      <ApiKeys keys={keys} toggleKey={toggleKey} loading={keysLoading} />
       <NewKeyModal isOpen={modalOpen} handleConfirm={addNewKey} />
     </div>
   );
