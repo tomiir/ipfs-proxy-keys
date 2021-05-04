@@ -29,7 +29,7 @@ function Home() {
   }, []);
   const toggleKey = key => () => dispatch(actionCreators.updateKey({ ...key, active: !key.active }));
   return (
-    <div className={`full-height full-width ${styles.screenContainer}`}>
+    <div className={`full-width ${styles.screenContainer}`}>
       <div className="row middle space-between m-bottom-6">
         <div className="row middle">
           <img className={`m-right-2 ${styles.ipfsLogo}`} src={PageLogo} alt="zerf-icon" />

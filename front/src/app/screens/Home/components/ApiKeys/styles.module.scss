@@ -1,11 +1,15 @@
 @import 'layout';
 
+.keys-container {
+  max-height: 600px;
+  overflow: auto;
+}
+
 .key-container {
   @extend .column, .middle;
   border-radius: 10px;
   background-color: white;
   padding: 20px;
-  box-shadow: 1px 1px 20px 5px silver;
 }
 
 .drop-icon {
@@ -26,7 +30,20 @@
   background-color: silver;
 }
 
-.requests-container {
-  padding-top: 20px;
-  border-top: 1px solid silver;
+.requests-header {
+  background-color: cadetblue;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.requests-body {
+  >:nth-child(2n) {
+    background-color: whitesmoke;
+  }
+}
+
+.request {
+  padding: 10px;
+  border-bottom: 1px solid whitesmoke;
 }

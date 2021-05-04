@@ -11,12 +11,12 @@ import styles from './styles.module.scss';
 
 function ApiKeys({ keys, toggleKey, loading }) {
   const [openKey, setOpenKey] = useState();
-  const toggleKeypOpen = index => () => (openKey === undefined ? setOpenKey(index) : setOpenKey());
+  const toggleKeypOpen = index => () => (openKey === index ? setOpenKey() : setOpenKey(index));
   return (
     <LoadingWrapper loading={loading}>
-      <div className="column full-height">
+      <div className={`column ${styles.keysContainer}`}>
         {keys.map((aKey, index) => (
-          <div className={`m-bottom-4 ${styles.keyContainer}`} key={aKey._id}>
+          <div className={`m-bottom-4 ${styles.keyContainer}`} key={aKey.id}>
             <div className="row bottom space-between m-bottom-4">
               <h2 className="large-text">{aKey.value}</h2>
               <div className="row center bottom">
@@ -32,7 +32,28 @@ function ApiKeys({ keys, toggleKey, loading }) {
                 </Button>
               </div>
             </div>
-            {openKey === index && <div className={styles.requestsContainer}>TO DO</div>}
+            {openKey === index && (
+              <div className="column full-width text-center">
+                <div className={`row midle space-between ${styles.requestsHeader}`}>
+                  <div className="quarter-width large-text bold">TIMESTAMP</div>
+                  <div className="quarter-width large-text bold">URL</div>
+                  <div className="quarter-width large-text bold">METHOD</div>
+                  <div className="quarter-width large-text bold">SIZE</div>
+                </div>
+                {aKey.requests && (
+                  <div className={`column full-width ${styles.requestsBody}`}>
+                    {aKey.requests.map(req => (
+                      <div key={req.timestamp} className={`row middle full-width ${styles.request}`}>
+                        <div className="quarter-width text">{req.timestamp}</div>
+                        <div className="quarter-width text">{req.url}</div>
+                        <div className="quarter-width text">{req.method}</div>
+                        <div className="quarter-width text">{req.size}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         ))}
       </div>

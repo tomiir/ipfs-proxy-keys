@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'testing') {
   mongoose.set('debug', true);
 }
 
-export const initDatabase = async () => {
+export const initDatabase = () => {
   mongoose.connect(process.env.DB_URL,
     { useNewUrlParser: true, useUnifiedTopology: true, authSource: 'admin' });
   return mongoose;
