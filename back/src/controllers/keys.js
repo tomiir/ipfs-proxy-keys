@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import Key from '../models/keys.js';
 import { endRequest, catchRequest } from '../helpers/request.js';
-import { entityAlreadyExists } from '../errors.js';
 
 export const getKeys = async (req, res) => {
   const { id } = req.user;
@@ -36,14 +35,6 @@ export const updateKey = async (req, res) => {
 
 export const createKey = async (req, res) => {
   const { user, body } = req;
-  const sameKey = await Key.findOne({ userId: user.id, value: body.value });
-  if (sameKey) {
-    return catchRequest({
-      err: entityAlreadyExists('A key with that value already exists'),
-      code: 400,
-      res,
-    });
-  }
   const key = new Key({ ...body, userId: user.id });
   try {
     await key.validate();

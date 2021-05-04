@@ -12,7 +12,6 @@ import styles from './styles.module.scss';
 function ApiKeys({ keys, toggleKey, loading }) {
   const [openKey, setOpenKey] = useState();
   const toggleKeypOpen = index => () => (openKey === undefined ? setOpenKey(index) : setOpenKey());
-  console.log(keys);
   return (
     <LoadingWrapper loading={loading}>
       <div className="column full-height">

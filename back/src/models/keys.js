@@ -1,4 +1,4 @@
-import { schema as Schema, mongoose } from '../db.js';
+import { schema as Schema, mongoose } from '../utils/db.js';
 
 const schema = new Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

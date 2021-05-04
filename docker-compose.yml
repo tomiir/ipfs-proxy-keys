@@ -35,10 +35,24 @@ services:
       - './front:/front'
       - './front/node_modules'
     command: 'npm start'
-
-volumes:
-  back:
-  front:
+    
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs
+    environment:
+      - IPFS_PROFILE=server
+  
+  
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    container_name: proxy
+    depends_on:
+      - db
+      - ipfs
+    ports:
+      - "5000:5000"
 
 networks:
   default:

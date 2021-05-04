@@ -1,5 +1,5 @@
 import { inspect } from 'util';
-import logger from '../logger.js';
+import logger from '../utils/logger.js';
 
 const setHeaders = (res, headers = {}) => Object.entries(headers).forEach(
   (header) => res.header(...header),

@@ -1,10 +1,10 @@
 import User from '../models/users.js';
 import { endRequest, catchRequest } from '../helpers/request.js';
-import { compare } from '../helpers/passwords.js';
+import { compare } from '../utils/passwords.js';
 import { encodeLogin as encode } from '../services/session.js';
 import { signInMapper, userMapper } from '../serializers/users.js';
-import logger from '../logger.js';
-import { entityNotFound, unauthorizedUser } from '../errors.js';
+import logger from '../utils/logger.js';
+import { entityNotFound, unauthorizedUser } from '../utils/errors.js';
 
 export const signIn = async (req, res) => {
   const { email, password } = req.body;

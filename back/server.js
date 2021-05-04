@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 
-import logger from './src/logger.js';
+import logger from './src/utils/logger.js';
 import app from './src/app.js';
 
 try {

@@ -5,7 +5,7 @@ import user from './mocks/user.js';
 import createUser from './factories/users.js';
 import { deleteDocumentsFrom } from './helpers/db.js';
 import { MODELS } from './helpers/constants.js';
-import { initDatabase, mongoose } from '../src/db.js';
+import { initDatabase, mongoose } from '../src/utils/db.js';
 
 let token;
 

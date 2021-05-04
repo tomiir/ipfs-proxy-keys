@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import { mongoose } from '../../src/db.js';
+import { mongoose } from '../../src/utils/db.js';
 
 export const deleteDocumentsFrom = (models) => {
   const promises = [];

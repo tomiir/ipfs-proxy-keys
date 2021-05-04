@@ -6,7 +6,7 @@ import createUser from './factories/users.js';
 import { deleteDocumentsFrom } from './helpers/db.js';
 import { MODELS } from './helpers/constants.js';
 import { decodeLogin as decode } from '../src/services/session.js';
-import { initDatabase, mongoose } from '../src/db.js';
+import { initDatabase, mongoose } from '../src/utils/db.js';
 
 describe('sessions', () => {
   beforeAll(async () => {

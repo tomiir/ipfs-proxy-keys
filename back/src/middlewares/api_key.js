@@ -2,7 +2,7 @@ import { catchRequest } from '../helpers/request.js';
 
 import {
   invalidApiKey,
-} from '../errors';
+} from '../utils/errors.js';
 
 export default (req, res, next) => {
   const apiKey = req.headers['x-api-key'];

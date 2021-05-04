@@ -2,7 +2,7 @@ import { decodeLogin } from '../services/session.js';
 import User from '../models/users.js';
 import { catchRequest } from '../helpers/request.js';
 
-import { unauthorizedUser, JWT_ERRORS } from '../errors.js';
+import { unauthorizedUser, JWT_ERRORS } from '../utils/errors.js';
 
 const authenticate = async (req, res, next, decode) => {
   const authHeader = req.headers[process.env.JWT_HEADER_NAME];
