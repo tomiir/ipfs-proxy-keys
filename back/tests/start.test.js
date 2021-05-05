@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+import 'regenerator-runtime/runtime';
 import request from 'supertest';
 import app from '../src/app.js';
 

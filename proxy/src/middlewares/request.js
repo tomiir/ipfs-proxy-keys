@@ -1,5 +1,4 @@
 import Key from "../models/keys.js";
-import Request from "../models/requests.js";
 
 const requestLogger = async (req, res, next) => {
   const apiKey = req.headers['ipfs-api-key'];

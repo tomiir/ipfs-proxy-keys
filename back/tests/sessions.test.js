@@ -1,8 +1,10 @@
 /* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
 import dotenv from 'dotenv';
+import 'regenerator-runtime/runtime';
 import { publicRequest } from './helpers/request.js';
 import user from './mocks/user.js';
-import createUser from './factories/users.js';
+import { createUser } from './factories/users.js';
 import { deleteDocumentsFrom } from './helpers/db.js';
 import { MODELS } from './helpers/constants.js';
 import { decodeLogin as decode } from '../src/services/session.js';

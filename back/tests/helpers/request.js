@@ -1,7 +1,7 @@
 import supertest from 'supertest';
 import app from '../../src/app.js';
 import user from '../mocks/user.js';
-import createUser from '../factories/users.js';
+import { createUser } from '../factories/users.js';
 
 export const request = () => supertest(app);
 

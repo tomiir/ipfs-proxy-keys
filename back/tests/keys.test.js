@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
+/* eslint-disable import/no-extraneous-dependencies */
+import 'regenerator-runtime/runtime';
 import dotenv from 'dotenv';
 import { initDatabase, mongoose } from '../src/utils/db.js';
 import key from './mocks/key.js';
