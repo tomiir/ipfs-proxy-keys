@@ -43,10 +43,9 @@ const removeValue = key => {
 const defineProperty = (prop, defaultKey = '', tag = '') => {
   const capitalizedKey = `${prop[0].toUpperCase()}${prop.substring(1)}`;
 
-  module.exports[`set${capitalizedKey}`] = (val, key = defaultKey) =>
-    setValue(`@@ZERF:${prop}${tag}${key}`, val);
-  module.exports[`get${capitalizedKey}`] = (key = defaultKey) => getValue(`@@ZERF:${prop}${tag}${key}`);
-  module.exports[`remove${capitalizedKey}`] = (key = defaultKey) => removeValue(`@@ZERF:${prop}${tag}${key}`);
+  module.exports[`set${capitalizedKey}`] = (val, key = defaultKey) => setValue(`${prop}${tag}${key}`, val);
+  module.exports[`get${capitalizedKey}`] = (key = defaultKey) => getValue(`${prop}${tag}${key}`);
+  module.exports[`remove${capitalizedKey}`] = (key = defaultKey) => removeValue(`${prop}${tag}${key}`);
 };
 
 // ------------------------------ LOCAL STORAGE PROPERTIES ------------------------------

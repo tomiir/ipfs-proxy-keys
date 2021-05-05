@@ -32,7 +32,7 @@ function Home() {
     <div className={`full-width ${styles.screenContainer}`}>
       <div className="row middle space-between m-bottom-6">
         <div className="row middle">
-          <img className={`m-right-2 ${styles.ipfsLogo}`} src={PageLogo} alt="zerf-icon" />
+          <img className={`m-right-2 ${styles.ipfsLogo}`} src={PageLogo} alt="ipfs-icon" />
           <h1 className="title bold">IPFS Proxy Key Manager</h1>
         </div>
         <Button className={styles.keysButton} onClick={openModal}>

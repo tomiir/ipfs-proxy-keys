@@ -23,7 +23,7 @@ function Login() {
     <div className="row full-width center middle space-between">
       <div className="column full-width center">
         <div className={`column full-width center ${styles.loginContainer}`}>
-          <img className={styles.loginIconTitle} src={PageLogo} alt="zerf-icon" />
+          <img className={styles.loginIconTitle} src={PageLogo} alt="ipfs-icon" />
           <span className={`subtitle bold ${styles.loginWelcome}`}>IPFS Proxy Key Manager</span>
           <div className={`column full-width center ${styles.loginFormContainer}`}>
             <Input
