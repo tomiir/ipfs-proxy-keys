@@ -42,7 +42,9 @@ Each request that arrives to the proxy is scanned for a valid api-key. If found,
 ## Back
 The back-end should be exposed at `localhost:8080` but only communicates with the front-end.
 
-
+### Tests
+1. `docker exec -it back /bin/bash`
+2. `npm test`
 
 ## Questions 
 ### How would you improve this assignment for a production ready solution (e.g. security, deployment)?
